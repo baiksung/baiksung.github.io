@@ -1,0 +1,76 @@
+---
+layout: default
+robots: noindex
+---
+
+<!--<div class="main-post-list">-->
+  <div id="about-me" style="display:none;">
+      <h1>About</h1>
+      <p>I am currently a PhD student at Seoul National University (SNU) <a href="https://cv.snu.ac.kr">Computer Vision Lab</a>, advised by <a href="https://cv.snu.ac.kr/index.php/kmlee/">Prof. Kyoung Mu Lee</a>. Previously, I was a research intern at Facebook Reality Labs in Redmond, USA. With my key research question "How can we endow machines with the ability to learn new concepts quickly and efficiently?" in mind, my research interests include meta-learning and applications that have only few data available.</p>
+
+      <p>I received the BASc degree in Engineering Science with a major in Electrical and Computer Engineering at the University of Toronto. I was once a semiconductor enthusiast and interned at Marvell Semiconductor. In my spare time, I enjoy wandering around and taking photos. I also try to make some time for playing the guitar.</p>
+
+
+  </div>
+  
+  <div id="projects" style="display:none;">
+  <ul class="timeline">
+    
+    {% for project in site.data.projects %}
+
+      <li class="timeline-inverted">
+        <div class="timeline-image">
+          <img class="img-me" src="{{ project.img | prepend: site.baseurl }}" alt="">
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+              <!--<h4><a href="https://github.com/{{ project.gh_user }}/{{ project.repo }}" target="_blank">{{ project.name }}</a></h4>-->
+              <h4><a>{{ project.name }}</a></h4>
+          <!-- <h4>{{ project.name }}</h4> -->
+          </div>
+          <div class="timeline-body">
+            {% if project.authors %}
+                <p>
+                {% for item in project.authors %}
+                    {% if item.self %}
+                        <strong>
+                    {% endif %}
+                    {% if item.author %}
+                        {{item.author}}, 
+                    {% else %}
+                        {{item.corresponding_author}}
+                    {% endif %}
+                    {% if item.self %}
+                        </strong>
+                    {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
+            <p> <strong> {{project.publication}} </strong> </p>
+            {% if project.links %}
+                {% for item in project.links %}
+                    <a target="_blank" href={{item.link}}><span>[{{item.link_name}}]</span></a>
+                {% endfor %}
+            {% endif %}
+            <div user="{{ project.gh_user }}" repo="{{ project.repo }}" class="ghbtn" style="margin-top: 10px;">
+              <!--
+              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers"><i class="fa fa-star"></i><span class="star"> ...</span></a>&emsp;&emsp;
+              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network"><i class="fa fa-code-fork"></i><span class="fork"> ...</span></a>&emsp;&emsp;
+              <a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/watchers"><i class="far fa-eye"></i><span class="watchers">...</span></a target="_blank" href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/watchers">
+              -->
+              <div style="height: 10px;"></div>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+    <!--
+    <li class="timeline-inverted">
+      <div class="timeline-image">
+        <img class="user-image" src="{{site.baseurl}}{{ site.timeline-img }}" alt="">
+      </div>
+    </li> -->
+  </ul>
+  </div>
+
+<!--</div>-->
+
